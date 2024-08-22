@@ -14,7 +14,7 @@ export const CellComponent: React.FC<CellProps> = memo(({cell, selected, onCellC
     return <Box width={16}
                 height={16}
                 onClick={() => onCellClick(cell)}
-                bg={cell.available&&cell.chessPiece?"green.300" :(selected ? "green.300" :(cell.color === "white" ? "gray.50" : "gray.400"))}
+                bg={cell.available&&cell.chessPiece?"red.300" :(selected ? "green.300" :(cell.color === "white" ? "gray.50" : "gray.400"))}
                 display="flex"
                 justifyContent="center"
                 alignItems="center">

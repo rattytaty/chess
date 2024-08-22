@@ -17,7 +17,7 @@ export class ChessPiece {
     logo: null | typeof chessPieceExample
     cell: Cell
     name: ChessPiecesNames
-    id: number
+    id: string
 
     constructor(color: Colors, cell: Cell) {
         this.color = color;
@@ -25,16 +25,19 @@ export class ChessPiece {
         this.cell.chessPiece = this
         this.name = ChessPiecesNames.PIECE
         this.logo = null
-        this.id = Math.random()
+        this.id = cell.id
     }
 
     canMoveOnTargetCell(targetCell: Cell): boolean {
         if (targetCell.chessPiece?.color === this.color)
-        return false
+            return false
+        if (targetCell.chessPiece?.name === ChessPiecesNames.KING)
+            return false
+
         return true
     }
 
-    moveOnTargetCell(targetCell: Cell) {
+    moveChessPieceOnTargetCell(targetCell: Cell) {
 
     }
 

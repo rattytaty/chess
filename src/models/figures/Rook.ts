@@ -14,6 +14,12 @@ export class Rook extends ChessPiece{
         if (!super.canMoveOnTargetCell(targetCell)) {
             return false;
         }
-        return true
+        if(this.cell.isVerticalEmpty(targetCell)){
+            return true
+        }
+        if(this.cell.isHorizontalEmpty(targetCell)){
+            return true
+        }
+        return false
     }
 }

@@ -15,6 +15,9 @@ export class Bishop extends ChessPiece{
         if (!super.canMoveOnTargetCell(targetCell)) {
             return false;
         }
-        return true
+        if (this.cell.isDiagonalEmpty(targetCell)) {
+            return true
+        }
+        return false
     }
 }

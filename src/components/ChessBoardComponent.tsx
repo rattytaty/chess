@@ -3,22 +3,29 @@ import {CellComponent} from "./CellComponent.tsx";
 import {FC, useEffect, useState} from "react";
 import {ChessBoard} from "../models/ChessBoard.ts";
 import {Cell} from "../models/Cell.ts";
+import {Player} from "../models/Player.ts";
 
 interface ChessBoardProps {
     board: ChessBoard
     setBoard: (board: ChessBoard) => void
+    currentPlayer: Player|null
+    changePlayer: () => void
 }
 
 
-export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard}) => {
+export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, currentPlayer, changePlayer}) => {
 
     const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
     const onCellClick = (cell: Cell) => {
+
         if (selectedCell !== cell && selectedCell?.chessPiece?.canMoveOnTargetCell(cell)) {
             selectedCell?.moveChessPieceOnTargetCell(cell)
             setSelectedCell(null)
+            changePlayer()
         } else {
-            setSelectedCell(cell)
+            if (cell.chessPiece?.color === currentPlayer?.color) {
+                setSelectedCell(cell)
+            }
         }
     }
     const highlightCellsAvailableToMoveOn = () => {

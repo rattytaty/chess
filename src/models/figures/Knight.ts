@@ -14,6 +14,8 @@ export class Knight extends ChessPiece{
         if (!super.canMoveOnTargetCell(targetCell)) {
             return false;
         }
-        return true
+        const dx = Math.abs(this.cell.x - targetCell.x);
+        const dy = Math.abs(this.cell.y - targetCell.y);
+        return (dx===1&&dy===2)||(dx===2&&dy===1)
     }
 }
