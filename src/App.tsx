@@ -25,9 +25,10 @@ export function App() {
         setCurrentPlayer(whitePlayer)
     }, [])
     return <div>
-        <div>колонки - х</div>
-        <div>ряды - у</div>
-        <ChessBoardComponent changePlayer={changePlayer} currentPlayer={currentPlayer} board={board}
+
+        <ChessBoardComponent changePlayer={changePlayer}
+                             currentPlayer={currentPlayer}
+                             board={board}
                              setBoard={setBoard}/>
     </div>
 }

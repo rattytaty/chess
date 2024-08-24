@@ -1,14 +1,15 @@
-import {Grid, GridItem} from "@chakra-ui/react";
+import {Box, Grid, GridItem} from "@chakra-ui/react";
 import {CellComponent} from "./CellComponent.tsx";
 import {FC, useEffect, useState} from "react";
 import {ChessBoard} from "../models/ChessBoard.ts";
 import {Cell} from "../models/Cell.ts";
 import {Player} from "../models/Player.ts";
+import {BoardMarks} from "./BoardMarks.tsx";
 
 interface ChessBoardProps {
     board: ChessBoard
     setBoard: (board: ChessBoard) => void
-    currentPlayer: Player|null
+    currentPlayer: Player | null
     changePlayer: () => void
 }
 
@@ -39,15 +40,23 @@ export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, curre
     }
     useEffect(() => highlightCellsAvailableToMoveOn(), [selectedCell])
 
-    return <Grid templateRows='repeat(8, 64px)'
-                 templateColumns='repeat(8, 64px)'>
-        {board.cells.map(row =>
-            row.map(cell => <GridItem key={cell.id}>
-                <CellComponent cell={cell}
-                               selected={selectedCell?.x === cell.x && selectedCell.y === cell.y}
-                               onCellClick={onCellClick}
-                />
-            </GridItem>)
-        )}
-    </Grid>
+
+
+    return <Box>
+
+       <BoardMarks>
+           <Grid templateRows='repeat(8, 64px)'
+                         templateColumns='repeat(8, 64px)'>
+           {board.cells.map(row =>
+               row.map(cell => <GridItem key={cell.id}>
+                   <CellComponent cell={cell}
+                                  selected={selectedCell?.x === cell.x && selectedCell.y === cell.y}
+                                  onCellClick={onCellClick}
+                   />
+               </GridItem>)
+           )}
+       </Grid>
+       </BoardMarks>
+
+    </Box>
 };

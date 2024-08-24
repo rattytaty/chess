@@ -40,6 +40,5 @@ export class Pawn extends ChessPiece {
     moveChessPieceOnTargetCell(targetCell:Cell){
         super.moveChessPieceOnTargetCell(targetCell)
         this.isFirstStep=false
-        console.log("hui")
     }
 }
