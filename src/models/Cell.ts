@@ -62,14 +62,22 @@ export class Cell {
         const yDirection = this.y < targetCell.y ? 1 : -1
         for (let i = 1; i < absX; i++) {
             if (!this.board.getCellByCoordinates(this.x + xDirection * i, this.y + yDirection * i).isCellEmpty()) return false
-
         }
         return true
+    }
+
+    addCapturedPiece(chessPiece:ChessPiece) {
+        chessPiece.color===Colors.WHITE
+            ?this.board.capturedWhitePieces.push(chessPiece)
+            :this.board.capturedBlackPieces.push(chessPiece)
     }
 
     moveChessPieceOnTargetCell(targetCell: Cell) {
         if (this.chessPiece && this.chessPiece?.canMoveOnTargetCell(targetCell)) {
             this.chessPiece.moveChessPieceOnTargetCell(targetCell)
+            if (targetCell.chessPiece){
+                this.addCapturedPiece(targetCell.chessPiece)
+            }
             targetCell.chessPiece = this.chessPiece
             targetCell.chessPiece.cell = targetCell
             this.chessPiece = null

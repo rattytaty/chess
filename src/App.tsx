@@ -4,7 +4,8 @@ import {ChessBoard} from "./models/ChessBoard.ts";
 import {useEffect, useState} from "react";
 import {Player} from "./models/Player.ts";
 import {Colors} from "./models/Colors.ts";
-
+import {Box} from "@chakra-ui/react";
+import {SessionInfo} from "./components/SessionInfo.tsx";
 
 export function App() {
     const [board, setBoard] = useState(new ChessBoard())
@@ -19,17 +20,19 @@ export function App() {
     const [currentPlayer, setCurrentPlayer] = useState<Player|null>(null)
     const changePlayer = () => setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer)
 
-
     useEffect(() => {
         restartBoard()
         setCurrentPlayer(whitePlayer)
     }, [])
-    return <div>
-
+    return <Box bg="gray.900"
+                width="100vw"
+                height="100vh"
+                display="flex">
         <ChessBoardComponent changePlayer={changePlayer}
                              currentPlayer={currentPlayer}
                              board={board}
                              setBoard={setBoard}/>
-    </div>
+        <SessionInfo board={board}/>
+    </Box>
 }
 

@@ -6,10 +6,14 @@ import {King} from "./figures/King.ts";
 import {Knight} from "./figures/Knight.ts";
 import {Pawn} from "./figures/Pawn.ts";
 import {Rook} from "./figures/Rook.ts";
+import {ChessPiece} from "./ChessPiece.ts";
 
 export class ChessBoard {
 
     cells: Array<Array<Cell>> = []
+
+    capturedWhitePieces:Array<ChessPiece>=[]
+    capturedBlackPieces:Array<ChessPiece>=[]
 
     public initCells() {
         for (let i = 0; i < 8; i++) {//creating rows
@@ -42,6 +46,8 @@ export class ChessBoard {
     public getCopyOfBoard() {
         const newBoard = new ChessBoard()
         newBoard.cells = this.cells
+        newBoard.capturedBlackPieces=this.capturedBlackPieces
+        newBoard.capturedWhitePieces=this.capturedWhitePieces
         return newBoard
     }
 
