@@ -42,7 +42,7 @@ export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, curre
 
 
 
-    return <Box>
+    return <Box m={5}>
 
        <BoardMarks>
            <Grid templateRows='repeat(8, 64px)'

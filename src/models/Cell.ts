@@ -1,6 +1,28 @@
 import {Colors} from "./Colors.ts";
 import {ChessPiece} from "./ChessPiece.ts";
-import {ChessBoard} from "./ChessBoard.ts";
+import {ChessBoard, historyOfMove} from "./ChessBoard.ts";
+
+const cellsLettersNaming = {
+    0 : "A",
+    1 : "B",
+    2 : "C",
+    3 : "D",
+    4 : "E",
+    5 : "F",
+    6 : "G",
+    7 : "H",
+}
+
+const cellsNumbersNaming = {
+    0 : 8,
+    1 : 7,
+    2 : 6,
+    3 : 5,
+    4 : 4,
+    5 : 3,
+    6 : 2,
+    7 : 1,
+}
 
 export class Cell {
     readonly x: number
@@ -18,7 +40,7 @@ export class Cell {
         this.chessPiece = chessPiece;
         this.board = board;
         this.available = false;
-        this.id = `${x}${y}`
+        this.id = `${cellsLettersNaming[x]}${cellsNumbersNaming[y]}`
     }
 
     isCellEmpty(): boolean {
@@ -66,18 +88,23 @@ export class Cell {
         return true
     }
 
-    addCapturedPiece(chessPiece:ChessPiece) {
-        chessPiece.color===Colors.WHITE
-            ?this.board.capturedWhitePieces.push(chessPiece)
-            :this.board.capturedBlackPieces.push(chessPiece)
+    /*addCapturedPiece(chessPiece:ChessPiece) {
+        chessPiece.color===Colors.WHITE ?this.board.capturedWhitePieces.push(chessPiece) :this.board.capturedBlackPieces.push(chessPiece)
+    }*/
+
+    addMoveToHistory(initialCell:Cell, targetCell:Cell){
+        const move:historyOfMove = {initialCell:initialCell.id, targetCell:targetCell.id, capturedPiece:targetCell.chessPiece}
+        this.board.historyOfTurns.push(move)
+        console.log(move)
     }
 
     moveChessPieceOnTargetCell(targetCell: Cell) {
         if (this.chessPiece && this.chessPiece?.canMoveOnTargetCell(targetCell)) {
             this.chessPiece.moveChessPieceOnTargetCell(targetCell)
-            if (targetCell.chessPiece){
-                this.addCapturedPiece(targetCell.chessPiece)
-            }
+            this.addMoveToHistory(this, targetCell)
+             /*if (targetCell.chessPiece){
+                 this.addCapturedPiece(targetCell.chessPiece)
+             }*/
             targetCell.chessPiece = this.chessPiece
             targetCell.chessPiece.cell = targetCell
             this.chessPiece = null
