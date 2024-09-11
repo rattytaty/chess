@@ -95,7 +95,6 @@ export class Cell {
     addMoveToHistory(initialCell:Cell, targetCell:Cell){
         const move:historyOfMove = {initialCell:initialCell.id, targetCell:targetCell.id, capturedPiece:targetCell.chessPiece}
         this.board.historyOfTurns.push(move)
-        console.log(move)
     }
 
     moveChessPieceOnTargetCell(targetCell: Cell) {

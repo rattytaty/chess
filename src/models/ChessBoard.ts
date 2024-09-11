@@ -54,8 +54,7 @@ export class ChessBoard {
     public getCopyOfBoard() {
         const newBoard = new ChessBoard()
         newBoard.cells = this.cells
-        newBoard.capturedBlackPieces = this.capturedBlackPieces
-        newBoard.capturedWhitePieces = this.capturedWhitePieces
+        newBoard.historyOfTurns = this.historyOfTurns
         return newBoard
     }
 
