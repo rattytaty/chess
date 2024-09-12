@@ -16,7 +16,7 @@ export const SessionInfo = (props: SessionInfoProps) => {
              bg="gray.700"
              color="gray.100">
             <TableContainer>
-                <Table size='sm'>
+                <Table mb={2} size='sm'>
                     <Thead>
                         <Tr>
                             <Th></Th>
