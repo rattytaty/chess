@@ -52,6 +52,5 @@ export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, curre
                 )}
             </Grid>
         </BoardMarks>
-
     </Box>
 };
