@@ -13,7 +13,6 @@ interface ChessBoardProps {
     changePlayer: () => void
 }
 
-
 export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, currentPlayer, changePlayer}) => {
 
     const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
@@ -40,23 +39,19 @@ export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, curre
     }
     useEffect(() => highlightCellsAvailableToMoveOn(), [selectedCell])
 
-
-
     return <Box m={5}>
-
-       <BoardMarks>
-           <Grid templateRows='repeat(8, 64px)'
-                         templateColumns='repeat(8, 64px)'>
-           {board.cells.map(row =>
-               row.map(cell => <GridItem key={cell.id}>
-                   <CellComponent cell={cell}
-                                  selected={selectedCell?.x === cell.x && selectedCell.y === cell.y}
-                                  onCellClick={onCellClick}
-                   />
-               </GridItem>)
-           )}
-       </Grid>
-       </BoardMarks>
+        <BoardMarks>
+            <Grid templateRows='repeat(8, 64px)'
+                  templateColumns='repeat(8, 64px)'>
+                {board.cells.map(row =>
+                    row.map(cell => <GridItem key={cell.id}>
+                        <CellComponent cell={cell}
+                                       selected={selectedCell?.x === cell.x && selectedCell.y === cell.y}
+                                       onCellClick={onCellClick}/>
+                    </GridItem>)
+                )}
+            </Grid>
+        </BoardMarks>
 
     </Box>
 };

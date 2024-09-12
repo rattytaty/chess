@@ -8,17 +8,12 @@ type SessionInfoProps = {
 
 export const SessionInfo = (props: SessionInfoProps) => {
 
-    console.log(props.board.historyOfTurns)
-
     return <Box display="flex"
                 borderRadius={10}
                 m={5}
                 bg="gray.700"
                 color="gray.100"
-    overscroll="contain"
-    >
-
-
+                overscroll="contain">
         <TableContainer>
             <Table size='sm'>
                 <Thead>
@@ -30,13 +25,14 @@ export const SessionInfo = (props: SessionInfoProps) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {props.board.historyOfTurns.map((turn, index)=>
-
-                        <Tr  height="45px">
-                            <Td>{index+1})</Td>
+                    {props.board.historyOfTurns.map((turn, index) =>
+                        <Tr height="45px">
+                            <Td>{index + 1})</Td>
                             <Td textAlign="center">{turn.initialCell}</Td>
                             <Td textAlign="center">{turn.targetCell}</Td>
-                            <Td alignItems="center" textAlign="center">{turn.capturedPiece?<Box   display="flex" justifyContent="center"><Image boxSize="28px" src={turn.capturedPiece.logo!}/></Box>:"-"}</Td>
+                            <Td alignItems="center" textAlign="center">{turn.capturedPiece ?
+                                <Box display="flex" justifyContent="center"><Image boxSize="28px"
+                                                                                   src={turn.capturedPiece.logo!}/></Box> : "-"}</Td>
                         </Tr>
                     )}
 
