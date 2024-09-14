@@ -12,7 +12,7 @@ export const SessionInfo = (props: SessionInfoProps) => {
                 overflow="auto">
 
 
-        <Box borderRadius={10}
+        <Box width="fit-content" borderRadius={10}
              bg="gray.700"
              color="gray.100">
             <TableContainer>

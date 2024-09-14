@@ -15,8 +15,8 @@ export const CellComponent: React.FC<CellProps> = memo(({cell, selected, onCellC
         event.preventDefault()
         onCellClick(cell)
     }
-    return <Box width={16}
-                height={16}
+    return <Box width={{base: "40px", sm: "64px", md: "64px"}}
+                height={{base: "40px", sm: "64px", md: "64px"}}
                 onDrag={() => onCellClick(cell)}
                 onDragOver={e=>e.preventDefault()}
                 onDrop={event=>onDrop(event,cell)}
@@ -28,7 +28,7 @@ export const CellComponent: React.FC<CellProps> = memo(({cell, selected, onCellC
 
         {cell.available && !cell.chessPiece && <DotOfAvailability/>}
 
-        {cell.chessPiece?.logo && <Image boxSize="64px"
+        {cell.chessPiece?.logo && <Image boxSize={{base: "40px", sm: "64px", md: "64px"}}
                                          alt={cell.chessPiece.name}
                                          src={cell.chessPiece.logo}/>}
     </Box>
