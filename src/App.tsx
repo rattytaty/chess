@@ -27,7 +27,7 @@ export function App() {
     return <Box bg="gray.900"
                 width="100vw"
                 height="100vh"
-                display="flex">
+                display={{md:"flex"}}>
         <ChessBoardComponent changePlayer={changePlayer}
                              currentPlayer={currentPlayer}
                              board={board}

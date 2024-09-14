@@ -39,10 +39,10 @@ export const ChessBoardComponent: FC<ChessBoardProps> = ({board, setBoard, curre
     }
     useEffect(() => highlightCellsAvailableToMoveOn(), [selectedCell])
 
-    return <Box >
+    return <Box>
         <BoardMarks>
-            <Grid templateRows={{base:"repeat(8, 40px)", sm:"repeat(8, 64px)", md:"repeat(8, 64px)"}}
-                  templateColumns={{base:"repeat(8, 40px)", sm:"repeat(8, 64px)", md:"repeat(8, 64px)"}}>
+            <Grid templateRows={{base: "repeat(8, 40px)", sm: "repeat(8, 52px)", md: "repeat(8, 64px)"}}
+                  templateColumns={{base: "repeat(8, 40px)", sm: "repeat(8, 52px)", md: "repeat(8, 64px)"}}>
                 {board.cells.map(row =>
                     row.map(cell => <GridItem key={cell.id}>
                         <CellComponent cell={cell}

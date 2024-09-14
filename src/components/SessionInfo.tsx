@@ -10,8 +10,9 @@ export const SessionInfo = (props: SessionInfoProps) => {
 
     return <Box m={5}
                 overflow="auto">
-
-
+        {/*<Button size="sm">1</Button>
+        <Button size="sm">1</Button>
+        <Button size="sm">1</Button>*/}
         <Box width="fit-content" borderRadius={10}
              bg="gray.700"
              color="gray.100">
@@ -36,12 +37,9 @@ export const SessionInfo = (props: SessionInfoProps) => {
                                                                                        src={turn.capturedPiece.logo!}/></Box> : "-"}</Td>
                             </Tr>
                         )}
-
-
                     </Tbody>
                 </Table>
             </TableContainer>
-
-
-        </Box></Box>
+        </Box>
+    </Box>
 };

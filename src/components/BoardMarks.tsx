@@ -8,15 +8,17 @@ export const BoardMarks: FC<{ children: React.ReactNode }> = ({children}) => {
         <Flex>
             <VStack w="15px" spacing={0}>
                 {verticalMarks.map(i => <Box key={i}
-                                             h={{base: "40px", sm: "64px", md: "64px"}}
+                                             h={{base: "40px", sm: "52px", md: "64px"}}
                                              color="gray.100">{i}</Box>)}
             </VStack>
             {children}
         </Flex>
-
-        <HStack h="15px" spacing={0}>
+        <HStack h="15px"
+                spacing={0}>
             <Box w="15px"></Box>
-            {horizontalMarks.map(i => <Box key={i} w={{base: "40px", sm: "64px", md: "64px"}} color="gray.100">{i}</Box>)}
+            {horizontalMarks.map(i => <Box key={i}
+                                           w={{base: "40px", sm: "52px", md: "64px"}}
+                                           color="gray.100">{i}</Box>)}
         </HStack>
     </div>
 };
